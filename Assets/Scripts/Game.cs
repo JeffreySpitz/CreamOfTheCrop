@@ -48,8 +48,10 @@ public class Game : MonoBehaviour
             if (timer >= speed)
             {
                 timer = 0f;
-                CountNeighbors();
-                PopulationControl();
+                PlantAnaysisUpdate();
+                PlantSeedsUpdate();
+                PlantUpdate();
+                SproutUpdate();
             }
             else
             {
@@ -59,6 +61,7 @@ public class Game : MonoBehaviour
 
         UserInput();
         UpdateZoom();
+        UpdateCamPosition();
     }
 
     void UserInput()
@@ -78,6 +81,7 @@ public class Game : MonoBehaviour
 
                 if (x >= 0 && y >= 0 && x < SCREEN_WIDTH && y < SCREEN_HEIGHT)
                 {
+                    grid[x, y].crop = Cell.Crop.Flower;
                     grid[x, y].SetAlive(!grid[x, y].isAlive);
                 }
             }
@@ -118,6 +122,18 @@ public class Game : MonoBehaviour
 
     }
 
+    private void UpdateCamPosition()
+    {
+        if (camera_follow_position.x > SCREEN_WIDTH - 12f)
+            camera_follow_position.x = SCREEN_WIDTH - 12f;
+        if (camera_follow_position.x < -12f)
+            camera_follow_position.x = -12f;
+        if (camera_follow_position.z > SCREEN_HEIGHT - 22f)
+            camera_follow_position.z = SCREEN_HEIGHT - 22f;
+        if (camera_follow_position.z < -22f)
+            camera_follow_position.z = -22f;
+    }
+
     private void ZoomIn()
     {
         zoom -= .5f;
@@ -135,82 +151,6 @@ public class Game : MonoBehaviour
         ret_zoom = Mathf.Exp(zoom);
     }
 
-    void CountNeighbors()
-    {
-        for (int y = 0; y < SCREEN_HEIGHT; y++)
-        {
-            for (int x = 0; x < SCREEN_WIDTH; x++)
-            {
-                int numNeighbors = 0;
-
-                for (int dy = -1; dy < 2; dy++)
-                {
-                    for (int dx = -1; dx < 2; dx++)
-                    {
-                        if (dx == 0 && dy == 0)
-                        {
-                            continue;
-                        }
-
-                        int nx = x + dx;
-                        int ny = y + dy;
-                        if (nx < 0)
-                        {
-                            nx += SCREEN_WIDTH;
-                        }
-                        if (nx >= SCREEN_WIDTH)
-                            nx %= SCREEN_WIDTH;
-
-
-                        if (ny < 0)
-                        {
-                            ny += SCREEN_HEIGHT;
-                        }
-
-                        if (ny >= SCREEN_HEIGHT)
-                            ny %= SCREEN_HEIGHT;
-
-                        if (ny >= 0 && ny < SCREEN_HEIGHT)
-                        {
-                            if (nx >= 0 && nx < SCREEN_WIDTH)
-                            {
-                                if (grid[nx, ny].isAlive)
-                                {
-                                    numNeighbors++;
-                                }
-                            }
-
-                        }
-                    }
-                }
-                grid[x, y].numNeighbors = numNeighbors;
-            }
-        }
-    }
-
-    void PopulationControl()
-    {
-        for (int y = 0; y<SCREEN_HEIGHT; y++)
-        {
-            for (int x=0; x<SCREEN_WIDTH; x++)
-            {
-                if (grid[x,y].isAlive)
-                {
-                    if (grid[x,y].numNeighbors <= lonliness_threshold || grid[x, y].numNeighbors >= crowded_threshold)
-                    {
-                        grid[x,y].SetAlive(false);
-                    }
-                } else
-                {
-                    if (grid[x,y].numNeighbors == birth_requirement)
-                    {
-                        grid[x,y].SetAlive(true);
-                    }
-                }
-            }
-        }
-    }
-
     void PlaceCells()
     {
         for (int y=0; y<SCREEN_HEIGHT; y++)
@@ -219,7 +159,9 @@ public class Game : MonoBehaviour
             {
                 Cell cell = Instantiate(cell_prefab, new Vector3(x, 0.5f, y), Quaternion.identity);
                 grid[x, y] = cell;
-                grid[x, y].SetAlive(RandomAliveCell());
+                grid[x, y].crop = RandomCrop();
+                grid[x, y].SetAlive(false);
+                Debug.Log(grid[x, y].crop);
             }
         }
     }
@@ -235,4 +177,39 @@ public class Game : MonoBehaviour
             return false;
         }
     }
+
+    Cell.Crop RandomCrop()
+    {
+        int rand = Random.Range(0, (int)Cell.Crop.NumOfTypes);
+        return (Cell.Crop) rand;
+    }
+
+    void PlantAnaysisUpdate()
+    {
+        for (int y = 0; y < SCREEN_HEIGHT; y++)
+            for (int x = 0; x < SCREEN_WIDTH; x++)
+                grid[x, y].AnalyzeGrid(grid, x, y);
+    }
+
+    void PlantUpdate()
+    {
+        for (int y = 0; y < SCREEN_HEIGHT; y++)
+            for (int x = 0; x < SCREEN_WIDTH; x++)
+                grid[x, y].UpdateStatus();
+    }
+
+    void PlantSeedsUpdate()
+    {
+        for (int y = 0; y < SCREEN_HEIGHT; y++)
+            for (int x = 0; x < SCREEN_WIDTH; x++)
+                grid[x, y].PlantSeeds(grid, x, y);
+    }
+
+    void SproutUpdate()
+    {
+        for (int y = 0; y < SCREEN_HEIGHT; y++)
+            for (int x = 0; x < SCREEN_WIDTH; x++)
+                grid[x, y].Sprout(grid, x, y);
+    }
+
 }

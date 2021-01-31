@@ -110,3 +110,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAlive: 0
   numNeighbors: 0
+  crop: 0
+  conway_mat: {fileID: 2100000, guid: d7985619b66af614ba7a2cf9ad2d8e95, type: 2}
+  flower_mat: {fileID: 2100000, guid: 318c9b0375d7a7a4da48c7998fd4b472, type: 2}
