@@ -23,7 +23,7 @@ public class Fire : Cell
                     continue;
                 if (ny < 0 || ny >= grid.GetLength(1))
                     continue;
-                if (grid[nx, ny].isAlive)
+                if (grid[nx, ny].isFlammable)
                 {
                     burnPositions[numBurns] = new Vector2(nx, ny);
                     numBurns++;

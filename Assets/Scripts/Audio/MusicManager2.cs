@@ -35,10 +35,7 @@ public class MusicManager2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("m"))
-        {
-            PlayPlaylist();
-        }
+
     }
 
     public void PlayPlaylist()
@@ -64,8 +61,9 @@ public class MusicManager2 : MonoBehaviour
 
     private void PlayTrack3()
     {
-        musicAudioSource1.clip = mainMusicThemes[2];
-        musicAudioSource1.PlayScheduled(time + musicAudioSource1DBL + musicAudioSource2DBL);
+        musicAudioSource3.clip = mainMusicThemes[2];
+        musicAudioSource3.loop = true;
+        musicAudioSource3.PlayScheduled(time + musicAudioSource1DBL + musicAudioSource2DBL);
     }
 
 

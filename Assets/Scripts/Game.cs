@@ -20,6 +20,7 @@ public class Game : MonoBehaviour
     public float camera_mouse_move_amount = 5f;
     public CellManager cellManager;
     public CellType cellType;
+    public MusicManager2 musicManager;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class Game : MonoBehaviour
         forward.y = 0f;
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
+        musicManager.PlayPlaylist();
     }
 
     // Update is called once per frame

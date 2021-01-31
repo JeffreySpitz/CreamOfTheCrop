@@ -7,7 +7,7 @@ public class Cactus : Cell
     private int numSand = 0;
     private Vector2[] sandPositions = new Vector2[25];
 
-    public int updatesPerSandSpread = 2;
+    public int updatesPerSandSpread = 3;
     private int updateCounter = 0;
 
     public override void CollectActionInfo(Cell[,] grid, int x, int y, CellManager cellManager)

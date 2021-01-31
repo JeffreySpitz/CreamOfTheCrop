@@ -14,6 +14,7 @@ public class DebugUI : MonoBehaviour
     private Button voidButton;
     private Button sandButton;
     private Button rockButton;
+    private Button barnButton;
 
 
     private Button saveButton;
@@ -34,6 +35,7 @@ public class DebugUI : MonoBehaviour
         voidButton = rootVisualElement.Q<Button>("void-button");
         sandButton = rootVisualElement.Q<Button>("sand-button");
         rockButton = rootVisualElement.Q<Button>("rock-button");
+        barnButton = rootVisualElement.Q<Button>("barn-button");
 
 
         saveButton = rootVisualElement.Q<Button>("save-button");
@@ -48,6 +50,7 @@ public class DebugUI : MonoBehaviour
         voidButton.RegisterCallback<ClickEvent>(ev => SetUserCellType(CellType.Void));
         sandButton.RegisterCallback<ClickEvent>(ev => SetUserCellType(CellType.Sand));
         rockButton.RegisterCallback<ClickEvent>(ev => SetUserCellType(CellType.Rock));
+        barnButton.RegisterCallback<ClickEvent>(ev => SetUserCellType(CellType.Barn));
 
 
         saveButton.RegisterCallback<ClickEvent>(ev => SaveLevel());

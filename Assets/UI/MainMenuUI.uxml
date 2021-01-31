@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="background-color: rgba(255, 118, 28, 255); width: 50%; height: 50%; justify-content: center; align-items: center; left: auto; flex-basis: auto;">
+        <ui:Label text="GM Oh No!" display-tooltip-when-elided="true" name="main-menu-txt" style="width: auto; height: 20%;" />
+        <ui:Button text="Button" display-tooltip-when-elided="true" />
+    </ui:VisualElement>
+</ui:UXML>
