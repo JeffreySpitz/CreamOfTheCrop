@@ -393,6 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAlive: 1
   num_seeds: 000000000000000000000000
+  cellType: 3
 --- !u!1 &4193856018919840861
 GameObject:
   m_ObjectHideFlags: 0

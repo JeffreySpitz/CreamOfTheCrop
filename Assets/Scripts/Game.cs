@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Game : MonoBehaviour
 {
@@ -45,20 +46,24 @@ public class Game : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) // left mouse button
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            if ((Input.mousePosition.y / Screen.height) > 0.25f)
             {
-                Vector3 mouse_point = hit.point;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                int x = Mathf.RoundToInt(mouse_point.x);
-                int y = Mathf.RoundToInt(mouse_point.z);
+                RaycastHit hit;
 
-                if (x >= 0 && y >= 0 && x < SCREEN_WIDTH && y < SCREEN_HEIGHT)
+                if (Physics.Raycast(ray, out hit))
                 {
-                    cellManager.SetCell(x, y, cellType);
+                    Vector3 mouse_point = hit.point;
+                    Debug.Log(mouse_point);
+
+                    int x = Mathf.RoundToInt(mouse_point.x);
+                    int y = Mathf.RoundToInt(mouse_point.z);
+
+                    if (x >= 0 && y >= 0 && x < SCREEN_WIDTH && y < SCREEN_HEIGHT)
+                    {
+                        cellManager.SetCell(x, y, cellType);
+                    }
                 }
             }
         }
