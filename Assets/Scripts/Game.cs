@@ -55,7 +55,6 @@ public class Game : MonoBehaviour
                 if (Physics.Raycast(ray, out hit))
                 {
                     Vector3 mouse_point = hit.point;
-                    Debug.Log(mouse_point);
 
                     int x = Mathf.RoundToInt(mouse_point.x);
                     int y = Mathf.RoundToInt(mouse_point.z);

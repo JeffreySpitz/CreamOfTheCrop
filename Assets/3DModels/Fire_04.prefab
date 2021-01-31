@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bf7caa0bf69c84497a86cd97ada495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAlive: 1
+  isAlive: 0
   num_seeds: 0000000000000000000000000000000000000000
   cellType: 4
+  burnTime: 5

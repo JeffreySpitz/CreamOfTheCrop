@@ -17,6 +17,12 @@ public class CellManager : MonoBehaviour
     public Cell dirtPrefab;
     public Cell pestPrefab;
     public Cell firePrefab;
+    public Cell cactusPrefab;
+    public Cell voidPrefab;
+    public Cell sandPrefab;
+    public Cell rockPrefab;
+
+
     public Cell[,] grid;
 
     public string loadFile;
@@ -70,6 +76,14 @@ public class CellManager : MonoBehaviour
             return pestPrefab;
         else if (cellType == CellType.Fire)
             return firePrefab;
+        else if (cellType == CellType.Cactus)
+            return cactusPrefab;
+        else if (cellType == CellType.Void)
+            return voidPrefab;
+        else if (cellType == CellType.Sand)
+            return sandPrefab;
+        else if (cellType == CellType.Rock)
+            return rockPrefab;
         else
             return dirtPrefab;
     }

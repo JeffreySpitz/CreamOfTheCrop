@@ -10,6 +10,12 @@ public class DebugUI : MonoBehaviour
     private Button dirtButton;
     private Button pestButton;
     private Button fireButton;
+    private Button cactusButton;
+    private Button voidButton;
+    private Button sandButton;
+    private Button rockButton;
+
+
     private Button saveButton;
     private TextField saveTextField;
 
@@ -24,6 +30,10 @@ public class DebugUI : MonoBehaviour
         dirtButton = rootVisualElement.Q<Button>("dirt-button");
         pestButton = rootVisualElement.Q<Button>("pest-button");
         fireButton = rootVisualElement.Q<Button>("fire-button");
+        cactusButton = rootVisualElement.Q<Button>("cactus-button");
+        voidButton = rootVisualElement.Q<Button>("void-button");
+        sandButton = rootVisualElement.Q<Button>("sand-button");
+        rockButton = rootVisualElement.Q<Button>("rock-button");
 
 
         saveButton = rootVisualElement.Q<Button>("save-button");
@@ -34,6 +44,12 @@ public class DebugUI : MonoBehaviour
         dirtButton.RegisterCallback<ClickEvent>(ev => SetUserCellType(CellType.Dirt));
         pestButton.RegisterCallback<ClickEvent>(ev => SetUserCellType(CellType.Pest));
         fireButton.RegisterCallback<ClickEvent>(ev => SetUserCellType(CellType.Fire));
+        cactusButton.RegisterCallback<ClickEvent>(ev => SetUserCellType(CellType.Cactus));
+        voidButton.RegisterCallback<ClickEvent>(ev => SetUserCellType(CellType.Void));
+        sandButton.RegisterCallback<ClickEvent>(ev => SetUserCellType(CellType.Sand));
+        rockButton.RegisterCallback<ClickEvent>(ev => SetUserCellType(CellType.Rock));
+
+
         saveButton.RegisterCallback<ClickEvent>(ev => SaveLevel());
     }
 
