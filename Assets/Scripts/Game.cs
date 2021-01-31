@@ -4,35 +4,27 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
-    private static int SCREEN_WIDTH = 64;
-    private static int SCREEN_HEIGHT = 48;
-    private float timer = 0f;
+    private int SCREEN_WIDTH;
+    private int SCREEN_HEIGHT;
     private float zoom = 3.4f;
     private float ret_zoom = 20f;  // zoom returned to the camera
     private Vector3 camera_follow_position;
     private Vector3 forward, right;
     private float edgeSize = 10f;
 
-    public int birth_requirement = 3; // Any dead cell with exactly 'birth_threshold' cells next to it becomes alive
-    public int crowded_threshold = 4; // Any live cell with at least 'crowd_threshold' cells next to it dies
-    public int lonliness_threshold = 1; // Any live cell with at most 'lonliness_threshold' cells next to it dies
-    public Cell cell_prefab;
     public float speed = 0.01f;
     public CameraController camera_controller;
     public Camera camera_object;
     public float camera_keyboard_move_amount = 10f;
     public float camera_mouse_move_amount = 5f;
-
-    public bool simulation_enabled = false;
-
-    Cell[,] grid = new Cell[SCREEN_WIDTH, SCREEN_HEIGHT];
-
+    public CellManager cellManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        SCREEN_WIDTH = cellManager.LEVEL_WIDTH;
+        SCREEN_HEIGHT = cellManager.LEVEL_HEIGHT;
         camera_controller.Setup(() => ret_zoom, () => camera_follow_position);
-        PlaceCells();
 
         forward =  camera_object.transform.forward;
         forward.y = 0f;
@@ -43,22 +35,6 @@ public class Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (simulation_enabled)
-        {
-            if (timer >= speed)
-            {
-                timer = 0f;
-                PlantAnaysisUpdate();
-                PlantSeedsUpdate();
-                PlantUpdate();
-                SproutUpdate();
-            }
-            else
-            {
-                timer += Time.deltaTime;
-            }
-        }
-
         UserInput();
         UpdateZoom();
         UpdateCamPosition();
@@ -81,8 +57,7 @@ public class Game : MonoBehaviour
 
                 if (x >= 0 && y >= 0 && x < SCREEN_WIDTH && y < SCREEN_HEIGHT)
                 {
-                    grid[x, y].crop = Cell.Crop.Flower;
-                    grid[x, y].SetAlive(!grid[x, y].isAlive);
+                    cellManager.SetCell(x, y, CellType.Corn);
                 }
             }
         }
@@ -90,7 +65,7 @@ public class Game : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.P))
         {
             // Pause / Resume simulation
-            simulation_enabled = !simulation_enabled;
+            cellManager.gameIsPaused = !cellManager.gameIsPaused;
         }
 
         if (Input.mouseScrollDelta.y != 0)
@@ -149,67 +124,6 @@ public class Game : MonoBehaviour
     private void UpdateZoom()
     {
         ret_zoom = Mathf.Exp(zoom);
-    }
-
-    void PlaceCells()
-    {
-        for (int y=0; y<SCREEN_HEIGHT; y++)
-        {
-            for (int x=0; x<SCREEN_WIDTH; x++)
-            {
-                Cell cell = Instantiate(cell_prefab, new Vector3(x, 0.5f, y), Quaternion.identity);
-                grid[x, y] = cell;
-                grid[x, y].crop = RandomCrop();
-                grid[x, y].SetAlive(false);
-                Debug.Log(grid[x, y].crop);
-            }
-        }
-    }
-
-    bool RandomAliveCell()
-    {
-        int rand = Random.Range(0, 100);
-        if (rand>75)
-        {
-            return true;
-        } else
-        {
-            return false;
-        }
-    }
-
-    Cell.Crop RandomCrop()
-    {
-        int rand = Random.Range(0, (int)Cell.Crop.NumOfTypes);
-        return (Cell.Crop) rand;
-    }
-
-    void PlantAnaysisUpdate()
-    {
-        for (int y = 0; y < SCREEN_HEIGHT; y++)
-            for (int x = 0; x < SCREEN_WIDTH; x++)
-                grid[x, y].AnalyzeGrid(grid, x, y);
-    }
-
-    void PlantUpdate()
-    {
-        for (int y = 0; y < SCREEN_HEIGHT; y++)
-            for (int x = 0; x < SCREEN_WIDTH; x++)
-                grid[x, y].UpdateStatus();
-    }
-
-    void PlantSeedsUpdate()
-    {
-        for (int y = 0; y < SCREEN_HEIGHT; y++)
-            for (int x = 0; x < SCREEN_WIDTH; x++)
-                grid[x, y].PlantSeeds(grid, x, y);
-    }
-
-    void SproutUpdate()
-    {
-        for (int y = 0; y < SCREEN_HEIGHT; y++)
-            for (int x = 0; x < SCREEN_WIDTH; x++)
-                grid[x, y].Sprout(grid, x, y);
     }
 
 }
