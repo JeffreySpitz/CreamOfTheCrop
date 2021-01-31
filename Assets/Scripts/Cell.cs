@@ -8,6 +8,7 @@ public class Cell : MonoBehaviour
 
     public bool isAlive = true;
     public int[] num_seeds = new int[(int)CellType.NumberOfTypes];
+    public CellType cellType;
 
     public virtual void CollectActionInfo(Cell[,] grid, int x, int y, CellManager cellManager)
     {

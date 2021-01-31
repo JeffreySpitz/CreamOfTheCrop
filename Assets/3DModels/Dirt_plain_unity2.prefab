@@ -97,3 +97,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAlive: 0
   num_seeds: 000000000000000000000000
+  cellType: 2
