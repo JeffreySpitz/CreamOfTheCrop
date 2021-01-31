@@ -16,9 +16,12 @@ public class Dirt : Cell
 
             if (cellType == CellType.Corn)
             {
-                int neighbors = Corn.CountNeighbors(grid, x, y);
-                if (neighbors == 0)
-                    cellManager.SetCell(x, y, CellType.Corn);
+                cellManager.SetCell(x, y, CellType.Corn);
+            }
+            else if (cellType == CellType.Flower)
+            {
+                if (Flower.CountNeighbors(grid, x, y) == 0)
+                    cellManager.SetCell(x, y, CellType.Flower);
             }
         }
 

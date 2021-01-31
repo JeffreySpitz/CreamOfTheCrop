@@ -18,6 +18,7 @@ public class Game : MonoBehaviour
     public float camera_keyboard_move_amount = 10f;
     public float camera_mouse_move_amount = 5f;
     public CellManager cellManager;
+    public CellType cellType;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +58,7 @@ public class Game : MonoBehaviour
 
                 if (x >= 0 && y >= 0 && x < SCREEN_WIDTH && y < SCREEN_HEIGHT)
                 {
-                    cellManager.SetCell(x, y, CellType.Corn);
+                    cellManager.SetCell(x, y, cellType);
                 }
             }
         }

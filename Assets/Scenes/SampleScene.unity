@@ -157,7 +157,7 @@ MonoBehaviour:
   gameIsPaused: 1
   secondsPerUpdate: 0.5
   cornPrefab: {fileID: -4635802609304238855, guid: 4f24cb067cf6d4f4bb9ab9d95ab718f3, type: 3}
-  flowerPrefab: {fileID: 0}
+  flowerPrefab: {fileID: -3158428119619777646, guid: 87a652d0faa120a459afcf030f2231b2, type: 3}
   dirtPrefab: {fileID: -1233967736834728143, guid: e05537dedde5e194bb5ca47ffd882a89, type: 3}
 --- !u!4 &445348049
 Transform:
@@ -260,7 +260,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 5.242, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -364,6 +364,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera_zoom_speed: 5
   camera_move_speed: 2
+--- !u!1 &1351991094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1351991095}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1351991095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351991094}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 100, y: 0, z: 100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1354631841
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +500,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2068505232}
   - component: {fileID: 2068505231}
+  - component: {fileID: 2068505233}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -495,6 +526,7 @@ MonoBehaviour:
   camera_keyboard_move_amount: 20
   camera_mouse_move_amount: 5
   cellManager: {fileID: 445348048}
+  cellType: 1
 --- !u!4 &2068505232
 Transform:
   m_ObjectHideFlags: 0
@@ -509,3 +541,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2068505233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068505230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae368888903214641b81eade371da0e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAlive: 1
+  num_seeds: 000000000000000000000000
