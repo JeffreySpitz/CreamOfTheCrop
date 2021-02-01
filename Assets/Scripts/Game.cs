@@ -20,6 +20,10 @@ public class Game : MonoBehaviour
     public float camera_mouse_move_amount = 5f;
     public CellManager cellManager;
     public CellType cellType;
+    public MusicManager2 musicManager;
+    public UIDocument gameUI;
+    public UIDocument pauseUI;
+    public SFXManager sfxManager;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +36,7 @@ public class Game : MonoBehaviour
         forward.y = 0f;
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
+        musicManager.PlayPlaylist();
     }
 
     // Update is called once per frame
@@ -40,6 +45,19 @@ public class Game : MonoBehaviour
         UserInput();
         UpdateZoom();
         UpdateCamPosition();
+    }
+
+    public void PauseGame()
+    {
+        cellManager.gameIsPaused = true;
+        gameUI.gameObject.SetActive(false);
+        pauseUI.gameObject.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        gameUI.gameObject.SetActive(true);
+        pauseUI.gameObject.SetActive(false);
     }
 
     void UserInput()
@@ -61,6 +79,7 @@ public class Game : MonoBehaviour
 
                     if (x >= 0 && y >= 0 && x < SCREEN_WIDTH && y < SCREEN_HEIGHT)
                     {
+                        sfxManager.PlopSFX();
                         cellManager.SetCell(x, y, cellType);
                     }
                 }
@@ -71,6 +90,7 @@ public class Game : MonoBehaviour
         {
             // Pause / Resume simulation
             cellManager.gameIsPaused = !cellManager.gameIsPaused;
+
         }
 
         if (Input.mouseScrollDelta.y != 0)

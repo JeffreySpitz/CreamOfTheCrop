@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="width: 75%; height: 75%; left: 13%; top: 13%; background-color: rgb(255, 208, 54); justify-content: center;">
+        <ui:Label text="Credits" display-tooltip-when-elided="true" style="font-size: 32px; -unity-text-align: upper-center; color: rgb(0, 0, 0); -unity-font-style: bold;" />
+        <ui:Label text="Level Design: JeffCube, ZachTron" display-tooltip-when-elided="true" style="font-size: 18px; -unity-text-align: upper-center; color: rgb(0, 0, 0); -unity-font-style: bold;" />
+        <ui:Label text="Scripting: JeffCube, SHHH" display-tooltip-when-elided="true" style="font-size: 18px; -unity-text-align: upper-center; color: rgb(0, 0, 0); -unity-font-style: bold;" />
+        <ui:Label text="Modeling: ZachTron, ScatMan" display-tooltip-when-elided="true" style="font-size: 18px; -unity-text-align: upper-center; color: rgb(0, 0, 0); -unity-font-style: bold;" />
+        <ui:Label text="Audio: SHHH" display-tooltip-when-elided="true" style="font-size: 18px; -unity-text-align: upper-center; color: rgb(0, 0, 0); -unity-font-style: bold;" />
+        <ui:Button text="Back" display-tooltip-when-elided="true" name="back-button" style="width: 20%; height: 10%; justify-content: flex-start; position: relative; left: 40%;" />
+    </ui:VisualElement>
+</ui:UXML>

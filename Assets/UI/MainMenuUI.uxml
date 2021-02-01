@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="background-color: rgb(255, 208, 54); width: 50%; height: 60%; justify-content: center; align-items: center; left: 25%; flex-basis: auto; top: 25%; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; opacity: 1; overflow: hidden;">
+        <ui:Label text="GM OH NO!" display-tooltip-when-elided="true" name="main-menu-txt" style="width: auto; height: 20%; -unity-font-style: bold; font-size: 48px;" />
+        <ui:Button text="Start" display-tooltip-when-elided="true" name="start-button" style="top: 10%; font-size: 24px;" />
+        <ui:Button text="Level Select" display-tooltip-when-elided="true" name="level-select-button" style="top: 10%; font-size: 20px;" />
+        <ui:Button text="Sandbox Mode" display-tooltip-when-elided="true" name="sandbox-button" style="top: 10%; font-size: 20px;" />
+        <ui:Button text="Credits" display-tooltip-when-elided="true" name="credits-button" enable-rich-text="true" style="top: 10%; font-size: 20px;" />
+    </ui:VisualElement>
+</ui:UXML>

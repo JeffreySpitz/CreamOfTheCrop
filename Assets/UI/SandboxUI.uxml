@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Button text="| |" display-tooltip-when-elided="true" name="pause-button" style="width: 10%; right: 0; top: auto; position: absolute; left: auto; -unity-font-style: bold; height: 10%;" />
+    <ui:VisualElement style="height: 25%; background-color: rgb(108, 108, 108); top: 75%; justify-content: flex-start; align-items: center;">
+        <ui:Label text="User Tools" display-tooltip-when-elided="true" name="User-Tools" style="padding-bottom: 10px;" />
+        <ui:Button text="Corn" display-tooltip-when-elided="true" name="corn-button" style="width: 10%; right: auto; position: absolute; left: 0; top: 20%;" />
+        <ui:Button text="Flower" display-tooltip-when-elided="true" name="flower-button" style="width: 10%; left: 0; right: auto; position: absolute; top: 40%;" />
+        <ui:Button text="Dirt" display-tooltip-when-elided="true" name="dirt-button" style="width: 10%; right: auto; position: absolute; left: 0; top: 60%;" />
+        <ui:Button text="Pest" display-tooltip-when-elided="true" name="pest-button" style="width: 10%; right: auto; top: 20%; position: absolute; left: 10%;" />
+        <ui:Button text="Fire" display-tooltip-when-elided="true" name="fire-button" style="width: 10%; right: auto; top: 40%; position: absolute; left: 10%;" />
+        <ui:Button text="Cactus" display-tooltip-when-elided="true" name="cactus-button" style="width: 10%; right: auto; top: 60%; position: absolute; left: 10%;" />
+        <ui:Button text="Void" display-tooltip-when-elided="true" name="void-button" style="width: 10%; right: auto; top: 20%; position: absolute; left: 20%;" />
+        <ui:Button text="Sand" display-tooltip-when-elided="true" name="sand-button" style="width: 10%; right: auto; top: 40%; position: absolute; left: 20%;" />
+        <ui:Button text="Rock" display-tooltip-when-elided="true" name="rock-button" style="width: 10%; right: auto; top: 60%; position: absolute; left: 20%;" />
+        <ui:Button text="Barn" display-tooltip-when-elided="true" name="barn-button" style="width: 10%; right: auto; top: 20%; position: absolute; left: 30%;" />
+        <ui:TextField picking-mode="Ignore" label="Save / Load Level Name" value="filler text" text="level_name" readonly="false" name="save-text-field" style="top: 20%; width: auto; right: auto; left: 60%; position: absolute; -unity-font-style: bold; color: rgba(0, 0, 0, 255);" />
+        <ui:Button text="Save Level" display-tooltip-when-elided="true" name="save-button" style="width: 25%; right: auto; top: 40%; position: absolute; left: 60%;" />
+        <ui:Button text="Load Level" display-tooltip-when-elided="true" name="load-button" style="width: 25%; right: auto; top: 60%; position: absolute; left: 60%;" />
+        <ui:Button text="Play/Pause Sim" display-tooltip-when-elided="true" name="pause-sim-button" style="width: 25%; right: auto; top: 44%; position: absolute; left: 32%; height: 30%;" />
+    </ui:VisualElement>
+</ui:UXML>

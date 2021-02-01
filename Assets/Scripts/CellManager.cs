@@ -21,6 +21,7 @@ public class CellManager : MonoBehaviour
     public Cell voidPrefab;
     public Cell sandPrefab;
     public Cell rockPrefab;
+    public Cell barnPrefab;
 
 
     public Cell[,] grid;
@@ -29,7 +30,7 @@ public class CellManager : MonoBehaviour
 
     private float timeSinceLastUpdate = 0f;
     private bool updateFlipFlop = true;
-    private string savedLevelsDir = "Assets/LevelSaves";
+    public string savedLevelsDir = "Assets/LevelSaves";
 
 
     // Start is called before the first frame update
@@ -84,6 +85,8 @@ public class CellManager : MonoBehaviour
             return sandPrefab;
         else if (cellType == CellType.Rock)
             return rockPrefab;
+        else if (cellType == CellType.Barn)
+            return barnPrefab;
         else
             return dirtPrefab;
     }
@@ -173,6 +176,19 @@ public class CellManager : MonoBehaviour
 
     public void LoadLevel(string loadFileName)
     {
+        // destroy previous level if it exists
+        if (grid != null)
+        {
+            for (int y = 0; y < LEVEL_HEIGHT; y++)
+            {
+                for (int x = 0; x < LEVEL_WIDTH; x++)
+                {
+                    if (grid[x, y] != null)
+                        Destroy(grid[x, y].gameObject);
+                }
+            }
+        }
+
         if (!Directory.Exists(savedLevelsDir))
             return;
 
