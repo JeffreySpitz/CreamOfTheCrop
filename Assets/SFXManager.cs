@@ -36,27 +36,27 @@ public class SFXManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("i"))
-        {
-            PlopSFX();
-        }
+        //if(Input.GetKeyDown("i"))
+        //{
+        //    PlopSFX();
+        //}
 
-        if (Input.GetKeyDown("o"))
-        {
-            FireSFX();
-        }
+        //if (Input.GetKeyDown("o"))
+        //{
+        //    FireSFX();
+        //}
 
-        if (Input.GetKeyDown("l"))
-        {
-            StopFireSFX();
-        }
+        //if (Input.GetKeyDown("l"))
+        //{
+        //    StopFireSFX();
+        //}
 
 
 
-        if (Input.GetKeyDown("u"))
-        {
-            LevelCompleteSFX();
-        }
+        //if (Input.GetKeyDown("u"))
+        //{
+        //    LevelCompleteSFX();
+        //}
     }
 
     public void LevelCompleteSFX()

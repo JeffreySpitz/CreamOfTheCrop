@@ -21,6 +21,9 @@ public class Game : MonoBehaviour
     public CellManager cellManager;
     public CellType cellType;
     public MusicManager2 musicManager;
+    public UIDocument gameUI;
+    public UIDocument pauseUI;
+    public SFXManager sfxManager;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +47,19 @@ public class Game : MonoBehaviour
         UpdateCamPosition();
     }
 
+    public void PauseGame()
+    {
+        cellManager.gameIsPaused = true;
+        gameUI.gameObject.SetActive(false);
+        pauseUI.gameObject.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        gameUI.gameObject.SetActive(true);
+        pauseUI.gameObject.SetActive(false);
+    }
+
     void UserInput()
     {
         if (Input.GetMouseButtonDown(0)) // left mouse button
@@ -63,6 +79,7 @@ public class Game : MonoBehaviour
 
                     if (x >= 0 && y >= 0 && x < SCREEN_WIDTH && y < SCREEN_HEIGHT)
                     {
+                        sfxManager.PlopSFX();
                         cellManager.SetCell(x, y, cellType);
                     }
                 }
@@ -73,6 +90,7 @@ public class Game : MonoBehaviour
         {
             // Pause / Resume simulation
             cellManager.gameIsPaused = !cellManager.gameIsPaused;
+
         }
 
         if (Input.mouseScrollDelta.y != 0)

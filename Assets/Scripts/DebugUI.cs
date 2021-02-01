@@ -15,9 +15,12 @@ public class DebugUI : MonoBehaviour
     private Button sandButton;
     private Button rockButton;
     private Button barnButton;
+    private Button pauseSimButton;
 
 
+    private Button pauseButton;
     private Button saveButton;
+    private Button loadButton;
     private TextField saveTextField;
 
     public Game gameController;
@@ -36,9 +39,12 @@ public class DebugUI : MonoBehaviour
         sandButton = rootVisualElement.Q<Button>("sand-button");
         rockButton = rootVisualElement.Q<Button>("rock-button");
         barnButton = rootVisualElement.Q<Button>("barn-button");
+        pauseSimButton = rootVisualElement.Q<Button>("pause-sim-button");
 
 
+        pauseButton = rootVisualElement.Q<Button>("pause-button");
         saveButton = rootVisualElement.Q<Button>("save-button");
+        loadButton = rootVisualElement.Q<Button>("load-button");
         saveTextField = rootVisualElement.Q<TextField>("save-text-field");
 
         cornButton.RegisterCallback<ClickEvent>(ev => SetUserCellType(CellType.Corn));
@@ -51,9 +57,17 @@ public class DebugUI : MonoBehaviour
         sandButton.RegisterCallback<ClickEvent>(ev => SetUserCellType(CellType.Sand));
         rockButton.RegisterCallback<ClickEvent>(ev => SetUserCellType(CellType.Rock));
         barnButton.RegisterCallback<ClickEvent>(ev => SetUserCellType(CellType.Barn));
+        pauseSimButton.RegisterCallback<ClickEvent>(ev => PlayPauseSim());
 
 
+        pauseButton.RegisterCallback<ClickEvent>(ev => PauseLevel());
         saveButton.RegisterCallback<ClickEvent>(ev => SaveLevel());
+        loadButton.RegisterCallback<ClickEvent>(ev => LoadLevel());
+    }
+
+    void PlayPauseSim()
+    {
+        cellManager.gameIsPaused = !cellManager.gameIsPaused;
     }
 
     void SetUserCellType(CellType cellType)
@@ -64,6 +78,16 @@ public class DebugUI : MonoBehaviour
     void SaveLevel()
     {
         cellManager.SaveLevel(saveTextField.text);
+    }
+
+    void LoadLevel()
+    {
+        cellManager.LoadLevel(saveTextField.text);
+    }
+
+    void PauseLevel()
+    {
+        gameController.PauseGame();
     }
 
     // Update is called once per frame
