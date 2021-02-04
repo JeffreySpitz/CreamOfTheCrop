@@ -19,10 +19,17 @@ public class MusicManager2 : MonoBehaviour
     AudioSource musicAudioSource3;
     //private int musicAudioSource3Samples;
     //private double musicAudioSource3DBL;
-    private int sampleRate = 44100;
+    //private int sampleRate = 44100;
+
+    public PauseeMusic pauseMusic;
 
 
     private double time;
+
+
+    public AudioMixerSnapshot inGameSnap;
+    public AudioMixerSnapshot pauseSnap;
+
 
 
 
@@ -35,12 +42,29 @@ public class MusicManager2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonDown("t"))
+        {
+            TransToPause();
+        }
+
+        if (Input.GetButtonDown("y"))
+        {
+            TransToIG();
+        }
+
+        if (Input.GetButtonDown("r"))
+        {
+            PlayPlaylist();
+        }
+
+
 
     }
 
     public void PlayPlaylist()
     {
         PlayTrack1();
+        pauseMusic.PlayPauseMusic();
         PlayTrack2();
         PlayTrack3();
     }
@@ -65,6 +89,19 @@ public class MusicManager2 : MonoBehaviour
         musicAudioSource3.loop = true;
         musicAudioSource3.PlayScheduled(time + musicAudioSource1DBL + musicAudioSource2DBL);
     }
+
+    public void TransToPause()
+    {
+        pauseSnap.TransitionTo(2);
+
+    }
+
+    public void TransToIG()
+    {
+        inGameSnap.TransitionTo(2);
+
+    }
+
 
 
 
