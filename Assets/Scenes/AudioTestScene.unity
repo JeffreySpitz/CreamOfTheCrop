@@ -159,6 +159,15 @@ MonoBehaviour:
   cornPrefab: {fileID: -4635802609304238855, guid: 4f24cb067cf6d4f4bb9ab9d95ab718f3, type: 3}
   flowerPrefab: {fileID: 0}
   dirtPrefab: {fileID: -1233967736834728143, guid: e05537dedde5e194bb5ca47ffd882a89, type: 3}
+  pestPrefab: {fileID: 0}
+  firePrefab: {fileID: 0}
+  cactusPrefab: {fileID: 0}
+  voidPrefab: {fileID: 0}
+  sandPrefab: {fileID: 0}
+  rockPrefab: {fileID: 0}
+  barnPrefab: {fileID: 0}
+  loadFile: 
+  savedLevelsDir: Assets/LevelSaves
 --- !u!4 &445348049
 Transform:
   m_ObjectHideFlags: 0
@@ -279,6 +288,7 @@ GameObject:
   - component: {fileID: 748071548}
   - component: {fileID: 748071547}
   - component: {fileID: 748071546}
+  - component: {fileID: 748071550}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
@@ -604,6 +614,28 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f41ba08408f4a54458bf635b1426dc29, type: 3}
   - {fileID: 8300000, guid: 8682db58c5ad7a54a8d64544a3b6dd7c, type: 3}
   - {fileID: 8300000, guid: 029fd8ab9d51813459f4e04223d7d8df, type: 3}
+  fire: {fileID: 8300000, guid: b16e48fe1a7c3da40924491e37151343, type: 3}
+  fireStop: {fileID: 8300000, guid: 2e7dcf0b3a5bfdb4e9ba7868594db609, type: 3}
+  levelComplete: {fileID: 8300000, guid: 9907369d4ea6df846b194b5a0a4795b0, type: 3}
+  plopSource: {fileID: 748071548}
+  fireSource: {fileID: 748071547}
+  levelCompleteSource: {fileID: 748071546}
+--- !u!114 &748071550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748071544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cda4f6f563c10c44a0fbe0a3848d8d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plop:
+  - {fileID: 8300000, guid: 8682db58c5ad7a54a8d64544a3b6dd7c, type: 3}
+  - {fileID: 8300000, guid: 029fd8ab9d51813459f4e04223d7d8df, type: 3}
+  - {fileID: 8300000, guid: f41ba08408f4a54458bf635b1426dc29, type: 3}
   fire: {fileID: 8300000, guid: b16e48fe1a7c3da40924491e37151343, type: 3}
   fireStop: {fileID: 8300000, guid: 2e7dcf0b3a5bfdb4e9ba7868594db609, type: 3}
   levelComplete: {fileID: 8300000, guid: 9907369d4ea6df846b194b5a0a4795b0, type: 3}
@@ -1212,6 +1244,11 @@ MonoBehaviour:
   camera_keyboard_move_amount: 20
   camera_mouse_move_amount: 5
   cellManager: {fileID: 445348048}
+  cellType: 0
+  musicManager: {fileID: 0}
+  gameUI: {fileID: 0}
+  pauseUI: {fileID: 0}
+  sfxManager: {fileID: 0}
 --- !u!4 &2068505232
 Transform:
   m_ObjectHideFlags: 0
